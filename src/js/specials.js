@@ -1,4 +1,4 @@
-export default function getSpecialAttacks(obj) {
+export default function getSpecialAttacks(obj, attack) {
   const {special} = obj
 
   if (!special) {
@@ -7,11 +7,14 @@ export default function getSpecialAttacks(obj) {
   
   const result = []
 
+
   for (let i of special) {
-    if(!i.description) {
-      i.description = 'Описание недоступно'
+    if (i.name === attack) {
+      if(!i.description) {
+        i.description = 'Описание недоступно';
+      }
+      result.push(i)
+      return result
     }
-    result.push(i)
   }
-  return result
 }
